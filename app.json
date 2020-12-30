@@ -1,0 +1,11 @@
+{
+    "name": "Tide Rust example application",
+    "description": "A demo application on the tide framework",
+    "repository": "https://github.com/jmn/tide-example",
+    "success_url": "/",
+    "keywords": ["rust", "rocket"],
+    "website": "https://github.com/jmn/tide-example",
+    "env": {
+      "BUILDPACK_URL": "https://github.com/emk/heroku-buildpack-rust.git"
+    }
+  }

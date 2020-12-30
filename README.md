@@ -50,6 +50,10 @@ $ openssl rand -base64 64
 cargo run
 ```
 
+# Deploy to Heroku
+To deploy this application to Heroku, use this button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 # Contributing
 
 Pull requests and fork variants very welcome. Any variants that aren't
