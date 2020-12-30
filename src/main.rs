@@ -61,6 +61,6 @@ async fn main() -> tide::Result<()> {
         .put(routes::articles::update)
         .post(routes::articles::update);
 
-    app.listen(env::var("PORT")?).await?;
+        app.listen(format!("http://127.0.0.1:{}", env::var("PORT")?)).await?;
     Ok(())
 }
