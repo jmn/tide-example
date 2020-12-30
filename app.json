@@ -6,6 +6,8 @@
     "keywords": ["rust", "rocket"],
     "website": "https://github.com/jmn/tide-example",
     "env": {
-      "BUILDPACK_URL": "https://github.com/emk/heroku-buildpack-rust.git"
+      "BUILDPACK_URL": "https://github.com/emk/heroku-buildpack-rust.git",
+      "DATABASE_URL": "sqlite://./db/sqlite3.db",
+      "TIDE_SECRET": "Ts39C5ewIGvpJM/n0WMGh7XQJk5Glknq5nY7i/s0FQhS43EtC2yLOv71Rt29Zwk7Em6KZ4+X7Yz6lHJeJqvsTQ=="
     }
   }
