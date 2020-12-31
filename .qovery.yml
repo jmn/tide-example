@@ -1,10 +1,11 @@
 application:
-  name: "tide-example"
-  project: "tide-example"
-  organization: "QoveryCommunity"
+  name: tide-example
+  project: tide-example
+  publicly_accessible: true
+  organization: QoveryCommunity
 routers:
-- name: "main-tide-example"
+- name: main
   routes:
-  - application_name: "tide-example"
+  - application_name: tide-example
     paths:
-    - "/"
+    - /
