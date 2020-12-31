@@ -32,9 +32,9 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl \
     # Clean up
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
-COPY --from=builder /app/target/release/tide-basic-crud tide-basic-crud
+COPY --from=builder /app/target/release/tide-example tide-example
 COPY templates templates
-COPY public public
+#COPY public public
 
 EXPOSE 9090
 ENV PORT 9090
