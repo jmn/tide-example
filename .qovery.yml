@@ -1,0 +1,11 @@
+---
+application:
+  name: "tide-example"
+  project: "tide-example"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-tide-example"
+  routes:
+  - application_name: "tide-example"
+    paths:
+    - "/"
