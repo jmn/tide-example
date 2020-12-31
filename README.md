@@ -35,6 +35,11 @@ example .envrc.
 export DATABASE_URL="sqlite://./db/sqlite3.db"
 ```
 
+#### On Windows
+``` bash
+export DATABASE_URL="sqlite:////./db/sqlite3.db"
+```
+
 ### Sessions
 The `TIDE_SECRET` needs to be a cryptographically random key of at
 least 32 bytes in your execution environment. An easy way to generate
