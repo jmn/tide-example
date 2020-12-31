@@ -9,9 +9,9 @@ publish = false
 anyhow = "1.0"
 async-std = { version = "1.8.0", features = ["attributes"] }
 tide = "0.14.0"
-sqlx = { version = "0.4.2", features = ["postgres", "chrono", "runtime-async-std-native-tls"] }
+sqlx = { version = "0.4.2", features = ["sqlite", "chrono", "runtime-async-std-native-tls"] }
 askama = { version = "0.10.5", features = ["with-tide"] }
 serde = "1.0.117"
 serde_urlencoded = "0.7.0"
 askama_tide = "0.11.2"
-async-sqlx-session = { version = "0.2.0", features = ["pg"] }
+async-sqlx-session = { version = "0.2.0", features = ["sqlite"] }
