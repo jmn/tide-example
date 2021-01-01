@@ -49,6 +49,7 @@ it is:
 $ openssl rand -base64 64
 ```
 
+
 ### Running the app
 
 ``` bash
