@@ -38,6 +38,6 @@ RUN apt-get update -y \
 COPY --from=builder /app/target/release/tide-example tide-example
 COPY templates templates
 COPY db db
-EXPOSE 9090/tcp
+EXPOSE 9090
 
 ENTRYPOINT ["./tide-example"]
