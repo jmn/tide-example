@@ -1,7 +1,13 @@
+use anyhow::Context;
 use async_sqlx_session::SqliteSessionStore;
+use dotenv;
 use sqlx::sqlite::SqlitePool;
 use std::{env, time::Duration};
-use tide::{sessions::SessionMiddleware, Redirect};
+use tide::{
+    http::{ensure, format_err},
+    sessions::SessionMiddleware,
+    Redirect,
+};
 
 pub mod records;
 mod templates;
@@ -17,7 +23,8 @@ pub struct State {
 pub type Request = tide::Request<State>;
 
 async fn db_connection() -> tide::Result<SqlitePool> {
-    let database_url = env::var("DATABASE_URL")?;
+    // let database_url = env::var("DATABASE_URL").expect("No DATABASE_URL set");
+    let database_url = env::var("DATABASE_URL").context("get database_url")?;
     Ok(SqlitePool::new(&database_url).await?)
 }
 
@@ -37,6 +44,21 @@ async fn build_session_middleware(
 #[async_std::main]
 async fn main() -> tide::Result<()> {
     tide::log::with_level(tide::log::LevelFilter::Info);
+    dotenv::dotenv().ok();
+
+    let port = env::var("TIDE_PORT").context("get TIDE_PORT")?;
+    let database_url = env::var("DATABASE_URL")?;
+    let tide_secret = env::var("TIDE_SECRET").context("get TIDE_SECRET")?;
+
+    println!("Running with environment variables:");
+    println!("DATABASE_URL={}", database_url);
+    println!("TIDE_PORT={}", port);
+    println!("TIDE_SECRET={}", tide_secret);
+    ensure!(
+        env::var("DATABASE_URL").is_ok(),
+        "DATABASE_URL NOT DEFINED"
+    );
+
     let db = db_connection().await?;
     let mut app = tide::with_state(State { db: db.clone() });
 
@@ -61,6 +83,7 @@ async fn main() -> tide::Result<()> {
         .put(routes::articles::update)
         .post(routes::articles::update);
 
-        app.listen(format!("http://0.0.0.0:{}", env::var("PORT")?)).await?;
+    app.listen(format!("http://0.0.0.0:{}", env::var("TIDE_PORT")?))
+        .await?;
     Ok(())
 }

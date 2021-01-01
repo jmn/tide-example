@@ -23,7 +23,7 @@ COPY --from=cacher /app/target target
 COPY --from=cacher /usr/local/cargo /usr/local/cargo
 COPY . .
 # Build our application, leveraging the cached deps!
-ENV SQLX_OFFLINE true
+#ENV SQLX_OFFLINE true
 RUN cargo build --release --bin tide-example
 
 FROM debian:buster-slim AS runtime
@@ -32,11 +32,11 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl \
     # Clean up
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 COPY --from=builder /app/target/release/tide-example tide-example
 COPY templates templates
-#COPY public public
 
-EXPOSE 9090
-ENV PORT 9090
+EXPOSE 9000
+ENV TIDE_PORT 9000
 
 ENTRYPOINT ["./tide-example"]
