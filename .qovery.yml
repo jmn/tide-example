@@ -5,6 +5,9 @@ application:
   organization: QoveryCommunity
 routers:
 - name: main
+  custom_domains:
+    - branch: main
+      domain: tide-example.jmnorlund.net
   routes:
   - application_name: tide-example
     paths:
