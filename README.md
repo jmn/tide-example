@@ -36,8 +36,8 @@ export DATABASE_URL="sqlite://./db/sqlite3.db"
 ```
 
 #### On Windows
-``` bash
-export DATABASE_URL="sqlite:////./db/sqlite3.db"
+```
+set DATABASE_URL=sqlite:////./db/sqlite3.db
 ```
 
 ### Sessions
